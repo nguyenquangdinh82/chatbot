@@ -68,6 +68,16 @@ node_names = [f"Node {i+1}: {node.message[:20]}..." for i, node in enumerate(nod
 selected_nodes = st.sidebar.multiselect("Select nodes to view context", list(range(len(nodes))), format_func=lambda x: node_names[x])
 
 # Kiểm tra node được chọn
+"""
+Displays the conversation context and allows the user to interact with the selected node in the conversation tree.
+
+For each selected node, this function:
+- Displays the selected node's message as a header.
+- Displays the full conversation context from the root node to the selected node.
+- Allows the user to enter a new request and updates the selected node's message with the result.
+- Displays any child nodes of the selected node.
+- Allows the user to add a new child node to the selected node.
+"""
 for idx in selected_nodes:
     selected_node = nodes[idx]
     st.header(f"Selected Node: {selected_node.message}")
